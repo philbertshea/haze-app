@@ -6,6 +6,7 @@ interface StatusInfo {
   label: string;
   bg: string;
   explainer?: string;
+  sensitive_explainer?: string;
 }
 
 interface RegionCardProps {
@@ -23,13 +24,13 @@ export default function RegionCard({
   region,
   psi24h,
   pm251h,
-  pm2524h,
   usaqi,
   psiStatus,
   pm25Status,
   usAqiStatus,
 }: RegionCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isSensitiveExpanded, setIsSensitiveExpanded] = useState(false);
 
   return (
     <div className="bg-slate-900/60 backdrop-blur border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition-colors flex flex-col justify-between">
@@ -117,7 +118,7 @@ export default function RegionCard({
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full flex items-center justify-between text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors pt-2 border-t border-slate-800/50 focus:outline-none"
         >
-          <span>{isExpanded ? 'Hide Health Advice' : 'View Health Advice'}</span>
+          <span>{isExpanded ? 'Hide Health Advice' : 'Health Advice for Everyone'}</span>
           <svg
             className={`w-4 h-4 transform transition-transform duration-200 ${
               isExpanded ? 'rotate-180' : 'rotate-0'
@@ -133,12 +134,6 @@ export default function RegionCard({
         {/* Explainer Drawer */}
         {isExpanded && (
           <div className="pt-2 space-y-3 text-xs text-slate-300 border-t border-slate-800/40">
-            {psiStatus.explainer && (
-              <div>
-                <span className="font-bold text-slate-200 block mb-0.5">24-Hr PSI Advice:</span>
-                <p className="leading-relaxed text-slate-400">{psiStatus.explainer}</p>
-              </div>
-            )}
             {pm25Status.explainer && (
               <div>
                 <span className="font-bold text-slate-200 block mb-0.5">1-Hr PM2.5 Advice:</span>
@@ -147,8 +142,58 @@ export default function RegionCard({
             )}
             {usAqiStatus.explainer && (
               <div>
-                <span className="font-bold text-slate-200 block mb-0.5">PM2.5 AQI Advice:</span>
+                <span className="font-bold text-slate-200 block mb-0.5">PM2.5 US AQI Advice:</span>
                 <p className="leading-relaxed text-slate-400">{usAqiStatus.explainer}</p>
+              </div>
+            )}
+            
+            {psiStatus.explainer && (
+              <div>
+                <span className="font-bold text-slate-200 block mb-0.5">24-Hr PSI Advice:</span>
+                <p className="leading-relaxed text-slate-400">{psiStatus.explainer}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Accordion Toggle Button */}
+        <button
+          onClick={() => setIsSensitiveExpanded(!isSensitiveExpanded)}
+          className="w-full flex items-center justify-between text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors pt-2 border-t border-slate-800/50 focus:outline-none"
+        >
+          <span>{isSensitiveExpanded ? 'Hide Health Advice' : 'Health Advice for Sensitive Groups'}</span>
+          <svg
+            className={`w-4 h-4 transform transition-transform duration-200 ${
+              isSensitiveExpanded ? 'rotate-180' : 'rotate-0'
+            }`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        {/* Explainer Drawer */}
+        {isSensitiveExpanded && (
+          <div className="pt-2 space-y-3 text-xs text-slate-300 border-t border-slate-800/40">
+            {pm25Status.sensitive_explainer && (
+              <div>
+                <span className="font-bold text-slate-200 block mb-0.5">1-Hr PM2.5 Advice:</span>
+                <p className="leading-relaxed text-slate-400">{pm25Status.sensitive_explainer}</p>
+              </div>
+            )}
+            {usAqiStatus.sensitive_explainer && (
+              <div>
+                <span className="font-bold text-slate-200 block mb-0.5">PM2.5 US AQI Advice:</span>
+                <p className="leading-relaxed text-slate-400">{usAqiStatus.sensitive_explainer}</p>
+              </div>
+            )}
+            
+            {psiStatus.sensitive_explainer && (
+              <div>
+                <span className="font-bold text-slate-200 block mb-0.5">24-Hr PSI Advice:</span>
+                <p className="leading-relaxed text-slate-400">{psiStatus.sensitive_explainer}</p>
               </div>
             )}
           </div>

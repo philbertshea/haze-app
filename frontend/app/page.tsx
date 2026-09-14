@@ -28,27 +28,27 @@ interface PsiData {
 
 // Helper to determine status badge based on 24-hr PSI score
 function getPsiStatus(score: number) {
-  if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'Air quality is considered satisfactory, and air pollution poses little or no risk.' };
-  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'Air quality is acceptable. Unusually sensitive individuals should consider limiting prolonged outdoor exertion.' };
-  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'Everyone may begin to experience health effects. Sensitive groups may experience more serious health effects.' };
-  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'Health alert: everyone may experience more serious health effects. Avoid outdoor activities.' };
-  return { label: 'Hazardous', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'Health warning of emergency conditions. The entire population is more likely to be affected.' };
+  if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
+  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
+  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'REDUCE prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE prolonged or strenuous outdoor physical exertion. \nPeople with Chronic Lung or Heart Disease should AVOID prolonged or strenuous outdoor physical exertion.' };
+  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'AVOID prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE ALL outdoor activity. \nPeople with Chronic Lung or Heart Disease should AVOID ALL outdoor activity.' };
+  return { label: 'Hazardous', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'MINIMISE ALL outdoor activity.', sensitive_explainer: 'AVOID ALL outdoor activity.' };
 }
 
 function getPm25Status(score: number) {
-  if (score <= 55) return { label: 'Normal', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: '1-hour PM2.5 levels are in the normal band. Standard activities can continue.' };
-  if (score <= 150) return { label: 'Elevated', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: '1-hour PM2.5 levels are elevated. Reduce strenuous outdoor exertion if you experience discomfort.' };
-  if (score <= 250) return { label: 'High', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: '1-hour PM2.5 levels are high. Minimize outdoor activity.' };
-  return { label: 'Very High', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: '1-hour PM2.5 levels are very high. Avoid all outdoor exertion.' };
+  if (score <= 55) return { label: 'Normal', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
+  if (score <= 150) return { label: 'Elevated', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'REDUCE strenuous outdoor activity for the next hour. ', sensitive_explainer: 'AVOID strenuous outdoor activity for the next hour.' };
+  if (score <= 250) return { label: 'High', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'AVOID strenuous outdoor activity for the next hour. ', sensitive_explainer: 'AVOID ALL outdoor activity for the next hour.' };
+  return { label: 'Very High', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'MINIMISE ALL outdoor activity for the next hour. ', sensitive_explainer: 'AVOID ALL outdoor activity for the next hour.' };
 }
 
 function getUsAqiStatus(score: number) {
-  if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'Air quality is good and poses little to no health risk.' };
-  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'Air quality is acceptable for most, but sensitive individuals should monitor symptoms.' };
-  if (score <= 150) return { label: 'Unhealthy for Sensitive Groups', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'Members of sensitive groups may experience health effects. General public is less likely to be affected.' };
-  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'Some members of the general public may experience health effects; sensitive groups may experience serious effects.' };
-  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'Health alert: Risk of health effects is increased for everyone.' };
-  return { label: 'Hazardous', bg: 'bg-stone-500/10 text-stone-400 border-stone-500/20', explainer: 'Health warning of emergency conditions: Everyone is more likely to be affected.' };
+  if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'It is a GREAT DAY to be outside.', sensitive_explainer: 'CONTINUE with normal activities.' };
+  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'It is a GOOD DAY to be outside.', sensitive_explainer: 'CONSIDER MAKING outdoor activities shorter and less intense. Watch for coughing and shortness of breath.'  };
+  if (score <= 150) return { label: 'Unhealthy for Sensitive Groups', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'It is a GOOD DAY to be outside.', sensitive_explainer: 'MAKE outdoor activities shorter and less intense. TAKE more breaks. Watch for coughing and shortness of breath.' };
+  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'REDUCE long or intense outdoor activities. TAKE more breaks.', sensitive_explainer: 'AVOID long or intense outdoor activities. Consider rescheduling or moving activities indoors.'};
+  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'AVOID long or intense outdoor activities. Consider rescheduling or moving activities indoors.', sensitive_explainer: 'AVOID ALL physical outdoor activities. Reschedule or move activities indoors.' };
+  return { label: 'Hazardous', bg: 'bg-stone-500/10 text-stone-400 border-stone-500/20', explainer: 'AVOID ALL physical outdoor activities.', sensitive_explainer: 'REMAIN INDOORS and keep activity levels low.' };
 }
 
 // Reads local public/data.json
