@@ -23,6 +23,7 @@ interface PsiData {
   };
   derivedReadings: {
     usaqi_from_pm25_one_hourly: Record<string, number>;
+    psi1h_from_pm25_one_hourly: Record<string, number>;
     [key: string]: Record<string, number>;
   };
 }
@@ -95,7 +96,7 @@ export default async function Page() {
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-white">Singapore Haze Tracker</h1>
-            <p className="text-slate-400 text-sm mt-1">Real-time air quality metrics by region</p>
+            <p className="text-slate-400 text-sm mt-1">Air Quality Metrics by Region</p>
           </div>
           <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 text-xs text-slate-400 self-start md:self-auto">
             Readings from NEA as of: <span className="text-slate-200 font-medium">{formattedDate}</span>
@@ -109,10 +110,13 @@ export default async function Page() {
             const pm251h = data.readings.pm25_one_hourly[region] ?? 0;
             const pm2524h = data.readings.pm25_twenty_four_hourly[region] ?? 0;
             const usaqi = data.derivedReadings.usaqi_from_pm25_one_hourly[region] ?? 0;
+            const psi1h = data.derivedReadings.psi1h_from_pm25_one_hourly[region] ?? 0;
+
 
             const psiStatus = getPsiStatus(psi24h);
             const pm25Status = getPm25Status(pm251h);
             const usAqiStatus = getUsAqiStatus(usaqi);
+            const psi1hStatus = getPsiStatus(psi1h);
 
             return (
               <RegionCard
@@ -122,9 +126,11 @@ export default async function Page() {
                 pm251h={pm251h}
                 pm2524h={pm2524h}
                 usaqi={usaqi}
+                psi1h={psi1h}
                 psiStatus={psiStatus}
                 pm25Status={pm25Status}
                 usAqiStatus={usAqiStatus}
+                psi1hStatus={psi1hStatus}
               />
             );
           })}
@@ -188,6 +194,10 @@ export default async function Page() {
             </h2>
             <h3>
               Disclaimer: Data can be inaccurate. Refer to the above official sources for the most up-to-date information.
+              Experimental 1hr PSI is computed purely using 1hr PM2.5 data, assuming that PM2.5 is the dominant pollutant and ignoring other pollutants.
+              This is purely experimental and IS NOT OFFICIAL NEA DATA. It SHOULD NOT be compared against the official 24-hr PSI by NEA.
+              The actual 24-hr PSI by NEA uses 24-hr PM2.5 levels, together with several other pollutant levels, and therefore paints
+              a more complete picture of air quality over the last 24 hours.
             </h3>
           </section>
         </div>

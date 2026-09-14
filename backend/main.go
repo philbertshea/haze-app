@@ -114,6 +114,44 @@ func PM25ToUSAQI(pm25 float64) int {
 	return 0
 }
 
+// PSIBreakpoint defines lower and upper concentration/index limits
+type PSIBreakpoint struct {
+	cLow, cHigh float64
+	iLow, iHigh float64
+}
+
+// PM2.5 breakpoints for 1-hour PSI sub-index computation
+var pm25PSIBreakpoints = []PSIBreakpoint{
+	{0.0, 12.0, 0, 50},
+	{12.1, 55.0, 51, 100},
+	{55.1, 150.0, 101, 200},
+	{150.1, 250.0, 201, 300},
+	{250.1, 350.0, 301, 400},
+	{350.1, 500.0, 401, 500},
+}
+
+// PM25To1HrPSI converts PM2.5 concentration (ug/m3) into a 1-hour PSI sub-index score
+func PM25To1HrPSI(pm25 float64) int {
+	// Truncate/round concentration to 1 decimal place
+	c := math.Floor(pm25*10) / 10
+
+	if c < 0 {
+		return 0
+	}
+	if c > 500.0 {
+		return 500 // Cap at max PSI scale
+	}
+
+	for _, bp := range pm25PSIBreakpoints {
+		if c >= bp.cLow && c <= bp.cHigh {
+			psi := ((bp.iHigh-bp.iLow)/(bp.cHigh-bp.cLow))*(c-bp.cLow) + bp.iLow
+			return int(math.Round(psi))
+		}
+	}
+
+	return 0
+}
+
 func main() {
 	// Read key from environment variable
 	apiKey := os.Getenv("GOV_API_KEY")
@@ -214,6 +252,13 @@ func main() {
 	derivedReadings["usaqi_from_pm25_one_hourly"] = make(map[string]float64)
 	for region, val := range fullReadings["pm25_one_hourly"] {
 		derivedReadings["usaqi_from_pm25_one_hourly"][region] = float64(PM25ToUSAQI(val))
+	}
+
+	// Logic to convert pm25_one_hourly to 1hr PSI
+
+	derivedReadings["psi1h_from_pm25_one_hourly"] = make(map[string]float64)
+	for region, val := range fullReadings["pm25_one_hourly"] {
+		derivedReadings["psi1h_from_pm25_one_hourly"][region] = float64(PM25To1HrPSI(val))
 	}
 
 	output := CleanedData{
