@@ -122,7 +122,7 @@ func main() {
 
 	// Extract the relevant data from PSI Response
 	regions := apiResponse.Data.Regions
-	timestamp := apiResponse.Data.Items[0].UpdatedTimestamp
+	timestamp := apiResponse.Data.Items[0].Timestamp
 	psiReadings := apiResponse.Data.Items[0].Readings
 
 	// Set up request for PM2.5 Data

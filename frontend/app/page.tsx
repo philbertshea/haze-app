@@ -77,7 +77,7 @@ export default async function Page() {
             <p className="text-slate-400 text-sm mt-1">Real-time air quality metrics by region</p>
           </div>
           <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 text-xs text-slate-400 self-start md:self-auto">
-            Last Updated: <span className="text-slate-200 font-medium">{formattedDate}</span>
+            Readings from NEA as of: <span className="text-slate-200 font-medium">{formattedDate}</span>
           </div>
         </header>
 
