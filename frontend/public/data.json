@@ -130,14 +130,5 @@
 			"west": 8
 		}
 	},
-	"derivedReadings": {
-		"usaqi_from_pm25_one_hourly": {
-			"central": 184,
-			"east": 163,
-			"north": 160,
-			"south": 153,
-			"west": 180
-		}
-	},
-	"fetchedAt": "2026-09-15T00:13:35+08:00"
+	"fetchedAt": "2026-09-14T16:03:37Z"
 }
