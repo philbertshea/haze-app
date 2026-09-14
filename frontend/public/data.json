@@ -1,24 +1,17 @@
 {
-	"lastUpdated": "2026-09-14T23:30:43+08:00",
+	"lastUpdated": "2026-09-14T23:45:46+08:00",
 	"regions": [
 		{
-			"name": "east",
+			"name": "north",
 			"labelLocation": {
-				"latitude": 1.35735,
-				"longitude": 103.94
+				"latitude": 1.41803,
+				"longitude": 103.82
 			}
 		},
 		{
 			"name": "south",
 			"labelLocation": {
 				"latitude": 1.29587,
-				"longitude": 103.82
-			}
-		},
-		{
-			"name": "north",
-			"labelLocation": {
-				"latitude": 1.41803,
 				"longitude": 103.82
 			}
 		},
@@ -30,16 +23,9 @@
 			}
 		},
 		{
-			"name": "east",
+			"name": "central",
 			"labelLocation": {
 				"latitude": 1.35735,
-				"longitude": 103.94
-			}
-		},
-		{
-			"name": "north",
-			"labelLocation": {
-				"latitude": 1.41803,
 				"longitude": 103.82
 			}
 		},
@@ -95,11 +81,18 @@
 			"west": 75
 		},
 		"pm10_twenty_four_hourly": {
-			"central": 83,
-			"east": 95,
-			"north": 61,
-			"south": 70,
-			"west": 84
+			"central": 106,
+			"east": 119,
+			"north": 75,
+			"south": 83,
+			"west": 99
+		},
+		"pm25_one_hourly": {
+			"central": 140,
+			"east": 97,
+			"north": 79,
+			"south": 71,
+			"west": 106
 		},
 		"pm25_sub_index": {
 			"central": 141,
@@ -137,5 +130,5 @@
 			"west": 8
 		}
 	},
-	"fetchedAt": "2026-09-14T09:03:41Z"
+	"fetchedAt": "2026-09-14T15:48:35Z"
 }
