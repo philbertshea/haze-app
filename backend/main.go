@@ -11,7 +11,7 @@ import (
 
 const (
 	apiURL     = "https://api-open.data.gov.sg/v2/real-time/api/psi"
-	outputFile = "data.json"
+	outputFile = "../frontend/public/data.json"
 )
 
 type RegionMetadata struct {
