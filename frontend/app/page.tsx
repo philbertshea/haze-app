@@ -14,9 +14,13 @@ interface PsiData {
   fetchedAt: string;
   regions: Region[];
   readings: {
-    pm25_sub_index: Record<string, number>;
+    pm25_one_hourly: Record<string, number>;
     pm25_twenty_four_hourly: Record<string, number>;
     psi_twenty_four_hourly: Record<string, number>;
+    [key: string]: Record<string, number>;
+  };
+  derivedReadings: {
+    usaqi_from_pm25_one_hourly: Record<string, number>;
     [key: string]: Record<string, number>;
   };
 }
@@ -28,6 +32,22 @@ function getPsiStatus(score: number) {
   if (score <= 200) return { label: 'Unhealthy', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20' };
   if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20' };
   return { label: 'Hazardous', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20' };
+}
+
+function getPm25Status(score: number) {
+  if (score <= 55) return { label: 'Normal', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' };
+  if (score <= 150) return { label: 'Elevated', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20' };
+  if (score <= 250) return { label: 'High', bg: 'bg-red-500/10 text-red-400 border-red-500/20' };
+  return { label: 'Very High', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20' };
+}
+
+function getUsAqiStatus(score: number) {
+  if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' };
+  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20' };
+  if (score <= 150) return { label: 'Unhealthy for Sensitive Groups', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20' };
+  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20' };
+  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20' };
+  return { label: 'Hazardous', bg: 'bg-brown-500/10 text-brown-400 border-brown-500/20' };
 }
 
 // Reads local public/data.json
@@ -67,68 +87,131 @@ export default async function Page() {
   // Extract the list of region names (central, west, north, south, east)
   const regionNames = data.regions.map((r) => r.name);
 
-  return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Header */}
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-white">Singapore Haze Tracker</h1>
-            <p className="text-slate-400 text-sm mt-1">Real-time air quality metrics by region</p>
-          </div>
-          <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 text-xs text-slate-400 self-start md:self-auto">
-            Readings from NEA as of: <span className="text-slate-200 font-medium">{formattedDate}</span>
-          </div>
-        </header>
+ return (
+  <main className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12">
+    <div className="max-w-6xl mx-auto space-y-8">
+      {/* Header */}
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-white">Singapore Haze Tracker</h1>
+          <p className="text-slate-400 text-sm mt-1">Real-time air quality metrics by region</p>
+        </div>
+        <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 text-xs text-slate-400 self-start md:self-auto">
+          Readings from NEA as of: <span className="text-slate-200 font-medium">{formattedDate}</span>
+        </div>
+      </header>
 
-        {/* Region Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {regionNames.map((region) => {
-            const psi24h = data.readings.psi_twenty_four_hourly[region] ?? 0;
-            const pm25Sub = data.readings.pm25_one_hourly[region] ?? 0;
-            const pm2524h = data.readings.pm25_twenty_four_hourly[region] ?? 0;
-            const status = getPsiStatus(psi24h);
+      {/* Region Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {regionNames.map((region) => {
+          const psi24h = data.readings.psi_twenty_four_hourly[region] ?? 0;
+          const pm25Sub = data.readings.pm25_one_hourly[region] ?? 0;
+          const pm2524h = data.readings.pm25_twenty_four_hourly[region] ?? 0;
+          const usaqi = data.derivedReadings.usaqi_from_pm25_one_hourly[region] ?? 0;
+          
+          // Get statuses for each specific metric
+          const psiStatus = getPsiStatus(psi24h);
+          const pm25Status = getPm25Status(pm25Sub);
+          const usAqiStatus = getUsAqiStatus(usaqi);
 
-            return (
-              <div
-                key={region}
-                className="bg-slate-900/60 backdrop-blur border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  {/* Card Title & Status Badge */}
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="capitalize text-xl font-bold text-white">{region}</h2>
-                    <span className={`text-xs px-3 py-1 rounded-full font-medium border ${status.bg}`}>
-                      {status.label}
-                    </span>
-                  </div>
-
-                  {/* Main Metric: 24-hr PSI */}
-                  <div className="mb-6">
-                    <span className="text-xs uppercase tracking-wider font-semibold text-slate-400">
-                      24-Hr PSI
-                    </span>
-                    <div className="text-4xl font-extrabold text-white mt-1">{psi24h}</div>
-                  </div>
+          return (
+            <div
+              key={region}
+              className="bg-slate-900/60 backdrop-blur border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition-colors flex flex-col justify-between"
+            >
+              <div>
+                {/* Card Title & Overall Status Badge */}
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="capitalize text-xl font-bold text-white">{region}</h2>
                 </div>
 
-                {/* Sub-Metrics Breakdown */}
-                <div className="space-y-3 pt-4 border-t border-slate-800/80">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">PM2.5 Sub-Index</span>
-                    <span className="font-semibold text-slate-200">{pm25Sub}</span>
+                {/* Grouped Metrics Layout */}
+                <div className="grid grid-cols-3 gap-3 mb-6">
+                  {/* NOW Group (Spans 2 columns) */}
+                  <div className="col-span-2 bg-indigo-950/20 border border-indigo-500/20 rounded-lg p-3 flex flex-col justify-between">
+                    <div className="flex items-center gap-1 mb-2">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 tracking-wider">
+                        NOW
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      {/* 1-Hr PM2.5 Metric */}
+                      <div className="flex flex-col justify-between">
+                        <div>
+                          <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                            1-Hr PM2.5
+                          </span>
+                          <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                            {pm25Sub}
+                          </div>
+                        </div>
+                        {/* PM2.5 Sub-Pill */}
+                        <div className="mt-2">
+                          <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${pm25Status.bg}`}>
+                            {pm25Status.label}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* PM2.5 US AQI Metric */}
+                      <div className="flex flex-col justify-between">
+                        <div>
+                          <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                            PM2.5 AQI
+                          </span>
+                          <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                            {usaqi}
+                          </div>
+                        </div>
+                        {/* US AQI Sub-Pill */}
+                        <div className="mt-2">
+                          <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${usAqiStatus.bg}`}>
+                            {usAqiStatus.label}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">PM2.5 24-Hr (&mu;g/m&sup3;)</span>
-                    <span className="font-semibold text-slate-200">{pm2524h}</span>
+                  {/* 24-HR Group */}
+                  <div className="bg-slate-950/50 border border-slate-800/80 rounded-lg p-3 flex flex-col justify-between">
+                    <div className="flex items-center gap-1 mb-2">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 tracking-wider">
+                        24HR
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                        24-Hr PSI
+                      </span>
+                      <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                        {psi24h}
+                      </div>
+                      {/* PSI Sub-Pill */}
+                      <div className="mt-2">
+                        <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${psiStatus.bg}`}>
+                          {psiStatus.label}
+                        </span>
+                      </div>
+                    </div>
                   </div>
+
+                  
                 </div>
               </div>
-            );
-          })}
-        </div>
+
+              {/* Sub-Metrics Breakdown */}
+              <div className="space-y-3 pt-4 border-t border-slate-800/80">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-slate-400">PM2.5 24-Hr (&mu;g/m&sup3;)</span>
+                  <span className="font-semibold text-slate-200">{pm2524h}</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </main>
-  );
+    </div>
+  </main>
+);
 }

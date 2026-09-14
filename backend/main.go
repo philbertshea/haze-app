@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"math"
 	"net/http"
 	"os"
 	"time"
@@ -26,6 +27,8 @@ type RegionMetadata struct {
 // E.g. readings["pm25_sub_index"]["north"] = 100
 type ReadingsMap map[string]map[string]float64
 
+type DerivedReadingsMap map[string]map[string]float64
+
 type Item struct {
 	Date             string      `json:"date"`
 	UpdatedTimestamp string      `json:"updatedTimestamp"`
@@ -43,10 +46,11 @@ type ApiResponse struct {
 }
 
 type CleanedData struct {
-	LastUpdated string           `json:"lastUpdated"`
-	Regions     []RegionMetadata `json:"regions"`
-	Readings    ReadingsMap      `json:"readings"`
-	FetchedAt   string           `json:"fetchedAt"`
+	LastUpdated     string             `json:"lastUpdated"`
+	Regions         []RegionMetadata   `json:"regions"`
+	Readings        ReadingsMap        `json:"readings"`
+	DerivedReadings DerivedReadingsMap `json:"derivedReadings"`
+	FetchedAt       string             `json:"fetchedAt"`
 }
 
 func concatReadings(mapA, mapB ReadingsMap) ReadingsMap {
@@ -71,6 +75,43 @@ func concatReadings(mapA, mapB ReadingsMap) ReadingsMap {
 	}
 
 	return result
+}
+
+// For PM2.5 to AQI conversion
+type AQIBreakpoint struct {
+	cLow, cHigh float64
+	iLow, iHigh float64
+}
+
+var pm25Breakpoints = []AQIBreakpoint{
+	{0.0, 12.0, 0, 50},
+	{12.1, 35.4, 51, 100},
+	{35.5, 55.4, 101, 150},
+	{55.5, 150.4, 151, 200},
+	{150.5, 250.4, 201, 300},
+	{250.5, 500.4, 301, 500},
+}
+
+// PM25ToUSAQI converts PM2.5 concentration (ug/m3) into US AQI integer score
+func PM25ToUSAQI(pm25 float64) int {
+	// Truncate/round to 1 decimal place per EPA spec
+	c := math.Floor(pm25*10) / 10
+
+	if c < 0 {
+		return 0
+	}
+	if c > 500.4 {
+		return 500 // Cap at max AQI scale
+	}
+
+	for _, bp := range pm25Breakpoints {
+		if c >= bp.cLow && c <= bp.cHigh {
+			aqi := ((bp.iHigh-bp.iLow)/(bp.cHigh-bp.cLow))*(c-bp.cLow) + bp.iLow
+			return int(math.Round(aqi))
+		}
+	}
+
+	return 0
 }
 
 func main() {
@@ -165,12 +206,22 @@ func main() {
 
 	// Extract the relevant data from PM2.5 Response
 	pm25Readings := apiResponse.Data.Items[0].Readings
+	fullReadings := concatReadings(psiReadings, pm25Readings)
+
+	// Logic to convert pm25_one_hourly to US AQI
+	derivedReadings := make(DerivedReadingsMap)
+
+	derivedReadings["usaqi_from_pm25_one_hourly"] = make(map[string]float64)
+	for region, val := range fullReadings["pm25_one_hourly"] {
+		derivedReadings["usaqi_from_pm25_one_hourly"][region] = float64(PM25ToUSAQI(val))
+	}
 
 	output := CleanedData{
-		LastUpdated: timestamp,
-		Regions:     regions,
-		Readings:    concatReadings(psiReadings, pm25Readings),
-		FetchedAt:   time.Now().Format(time.RFC3339),
+		LastUpdated:     timestamp,
+		Regions:         regions,
+		Readings:        fullReadings,
+		DerivedReadings: derivedReadings,
+		FetchedAt:       time.Now().Format(time.RFC3339),
 	}
 
 	// Convert data structure into json byte slice
