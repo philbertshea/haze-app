@@ -200,7 +200,7 @@ export default async function Page() {
                 </div>
               </div>
 
-              {/* Sub-Metrics Breakdown */}
+              {/* Explainer */}
               <div className="space-y-3 pt-4 border-t border-slate-800/80">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-slate-400">PM2.5 24-Hr (&mu;g/m&sup3;)</span>
