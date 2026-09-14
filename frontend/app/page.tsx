@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import Image from 'next/image';
 import RegionCard from '@/components/RegionCard';
 
 interface Region {
@@ -85,7 +86,7 @@ export default async function Page() {
     timeZone: 'Asia/Singapore',
   });
 
-  const regionNames = data.regions.map((r) => r.name);
+  const regionNames = data.regions.map((r) => r.name).sort((a, b) => a.localeCompare(b));
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12">
@@ -127,6 +128,68 @@ export default async function Page() {
               />
             );
           })}
+        </div>
+
+        {/* Bottom Sections */}
+        <div className="space-y-12 pt-8 border-t border-slate-800/80">
+          {/* PM 2.5 to AQI Explainer */}
+          <section className="bg-slate-900/60 border border-slate-800 rounded-xl p-6 md:p-8 space-y-6">
+            <h2 className="text-2xl font-bold text-white tracking-tight">
+              PM 2.5 to AQI Explainer
+            </h2>
+            
+            <div className="relative w-full overflow-hidden rounded-lg border border-slate-800 bg-slate-950">
+              <Image
+                src="/pm25ToAQI.png"
+                alt="PM 2.5 to AQI Conversion Chart"
+                width={1200}
+                height={675}
+                className="w-full h-auto object-cover"
+                priority={false}
+              />
+            </div>
+
+            <p className="text-sm text-slate-300 leading-relaxed">
+              This chart illustrates the correspondence between 1-hr PM 2.5 values and US AQI values.
+              24-hr PSI relies on several pollutant indicators, so we cannot convert these to PSI.
+            </p>
+          </section>
+
+          {/* References Section */}
+          <section className="bg-slate-900/40 border border-slate-800/60 rounded-xl p-6 md:p-8 space-y-4 text-xs text-slate-400">
+            <h2 className="text-lg font-semibold text-slate-200">
+              Useful Links and References
+            </h2>
+            <ul className="space-y-2 list-disc list-inside leading-relaxed text-slate-400">
+              <li>
+                <a href="https://www.haze.gov.sg">Haze.gov.sg: NEA's official Haze Site</a>
+              </li>
+              <li>
+                <a href="https://www.haze.gov.sg/resources/posters">NEA: Haze Advisory Resources</a>
+              </li>
+              <li>
+                <a href="https://www.haze.gov.sg/docs/default-source/faq/computation-of-the-pollutant-standards-index-(psi).pdf">NEA: Computation of the PSI</a>
+              </li>
+              <li>
+                <a href="https://aqicn.org/city/singapore/">AQI: Third-party site showing live AQI</a>
+              </li>
+              <li>
+                <a href="https://document.airnow.gov/air-quality-guide-for-particle-pollution.pdf">USA's AQI Guide for Particle Pollution</a>
+              </li>
+              <li>
+                <a href="https://data.gov.sg/datasets/d_fe37906a0182569d891506e815e819b7/view">Data.gov.sg: PSI API</a>
+              </li>
+              <li>
+                <a href="https://data.gov.sg/datasets/d_e1058d6974c877257e32048ab128ad83/view">Data.gov.sg: PM2.5 API</a>
+              </li>
+            </ul>
+            <h2>
+              Note: Sensitive groups refer to the elderly, pregnant women, children, and people with chronic lung or heart illnesses.
+            </h2>
+            <h3>
+              Disclaimer: Data can be inaccurate. Refer to the above official sources for the most up-to-date information.
+            </h3>
+          </section>
         </div>
       </div>
     </main>
