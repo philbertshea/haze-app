@@ -1,0 +1,32 @@
+name: Fetch PSI Data
+
+on:
+    schedule:
+        - cron: '*/15 * * * *' 
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    fetch-and-commit:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up Go
+              uses: actions/setup-go@v5
+              with:
+                go-version: '1.22'
+            
+            - name: Run Go Fetcher
+              run: go run main.go
+
+            - name: Commit and Push if changed
+              run: |
+                git config --global user.name "github-actions[bot]"
+                git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                git add data.json
+                git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update PSI data [skip ci]" && git push)

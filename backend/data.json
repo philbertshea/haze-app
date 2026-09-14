@@ -1,0 +1,127 @@
+{
+	"lastUpdated": "2026-09-14T16:30:47+08:00",
+	"regions": [
+		{
+			"name": "south",
+			"labelLocation": {
+				"latitude": 1.29587,
+				"longitude": 103.82
+			}
+		},
+		{
+			"name": "north",
+			"labelLocation": {
+				"latitude": 1.41803,
+				"longitude": 103.82
+			}
+		},
+		{
+			"name": "west",
+			"labelLocation": {
+				"latitude": 1.35735,
+				"longitude": 103.7
+			}
+		},
+		{
+			"name": "central",
+			"labelLocation": {
+				"latitude": 1.35735,
+				"longitude": 103.82
+			}
+		},
+		{
+			"name": "east",
+			"labelLocation": {
+				"latitude": 1.35735,
+				"longitude": 103.94
+			}
+		}
+	],
+	"readings": {
+		"co_eight_hour_max": {
+			"central": 1,
+			"east": 1,
+			"north": 1,
+			"south": 1,
+			"west": 1
+		},
+		"co_sub_index": {
+			"central": 9,
+			"east": 9,
+			"north": 11,
+			"south": 10,
+			"west": 9
+		},
+		"no2_one_hour_max": {
+			"central": 18,
+			"east": 10,
+			"north": 12,
+			"south": 11,
+			"west": 15
+		},
+		"o3_eight_hour_max": {
+			"central": 49,
+			"east": 56,
+			"north": 79,
+			"south": 37,
+			"west": 32
+		},
+		"o3_sub_index": {
+			"central": 21,
+			"east": 24,
+			"north": 34,
+			"south": 16,
+			"west": 13
+		},
+		"pm10_sub_index": {
+			"central": 66,
+			"east": 71,
+			"north": 55,
+			"south": 60,
+			"west": 66
+		},
+		"pm10_twenty_four_hourly": {
+			"central": 81,
+			"east": 92,
+			"north": 59,
+			"south": 68,
+			"west": 82
+		},
+		"pm25_sub_index": {
+			"central": 115,
+			"east": 101,
+			"north": 87,
+			"south": 91,
+			"west": 101
+		},
+		"pm25_twenty_four_hourly": {
+			"central": 69,
+			"east": 55,
+			"north": 44,
+			"south": 47,
+			"west": 55
+		},
+		"psi_twenty_four_hourly": {
+			"central": 115,
+			"east": 101,
+			"north": 87,
+			"south": 91,
+			"west": 101
+		},
+		"so2_sub_index": {
+			"central": 4,
+			"east": 2,
+			"north": 3,
+			"south": 1,
+			"west": 4
+		},
+		"so2_twenty_four_hourly": {
+			"central": 6,
+			"east": 2,
+			"north": 5,
+			"south": 2,
+			"west": 7
+		}
+	},
+	"fetchedAt": "2026-09-14T16:42:29+08:00"
+}
