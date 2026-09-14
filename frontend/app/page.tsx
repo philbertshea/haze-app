@@ -85,7 +85,7 @@ export default async function Page() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {regionNames.map((region) => {
             const psi24h = data.readings.psi_twenty_four_hourly[region] ?? 0;
-            const pm25Sub = data.readings.pm25_sub_index[region] ?? 0;
+            const pm25Sub = data.readings.pm25_one_hourly[region] ?? 0;
             const pm2524h = data.readings.pm25_twenty_four_hourly[region] ?? 0;
             const status = getPsiStatus(psi24h);
 

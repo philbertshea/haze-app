@@ -11,6 +11,7 @@ import (
 
 const (
 	apiURL     = "https://api-open.data.gov.sg/v2/real-time/api/psi"
+	pm25ApiURL = "https://api-open.data.gov.sg/v2/real-time/api/pm25"
 	outputFile = "../frontend/public/data.json"
 )
 
@@ -48,6 +49,30 @@ type CleanedData struct {
 	FetchedAt   string           `json:"fetchedAt"`
 }
 
+func concatReadings(mapA, mapB ReadingsMap) ReadingsMap {
+	result := make(ReadingsMap)
+
+	// Copy mapA
+	for key, subMap := range mapA {
+		result[key] = make(map[string]float64)
+		for region, val := range subMap {
+			result[key][region] = val
+		}
+	}
+
+	// Overwrite/Add mapB
+	for key, subMap := range mapB {
+		if _, exists := result[key]; !exists {
+			result[key] = make(map[string]float64)
+		}
+		for region, val := range subMap {
+			result[key][region] = val
+		}
+	}
+
+	return result
+}
+
 func main() {
 	// Read key from environment variable
 	apiKey := os.Getenv("GOV_API_KEY")
@@ -56,6 +81,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Set up request for General PSI Data
 	client := &http.Client{Timeout: 10 * time.Second}
 	request, requestError := http.NewRequest("GET", apiURL, nil)
 	if requestError != nil {
@@ -90,17 +116,60 @@ func main() {
 	}
 
 	if len(apiResponse.Data.Items) == 0 {
-		fmt.Printf("Mp items in response.\n")
+		fmt.Printf("No items in response.\n")
 		os.Exit(1)
 	}
 
-	// Only want the latest data Item
-	latestItem := apiResponse.Data.Items[0]
+	// Extract the relevant data from PSI Response
+	regions := apiResponse.Data.Regions
+	timestamp := apiResponse.Data.Items[0].UpdatedTimestamp
+	psiReadings := apiResponse.Data.Items[0].Readings
+
+	// Set up request for PM2.5 Data
+	client = &http.Client{Timeout: 10 * time.Second}
+	request, requestError = http.NewRequest("GET", pm25ApiURL, nil)
+	if requestError != nil {
+		fmt.Printf("Error creating request: %v\n", requestError)
+		os.Exit(1)
+	}
+
+	response, responseError = client.Do(request)
+	if responseError != nil {
+		fmt.Printf("Error creating request: %v\n", requestError)
+		os.Exit(1)
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(response.Body)
+		fmt.Printf("API returned status %d: %s\n", response.StatusCode, string(body))
+		os.Exit(1)
+	}
+
+	responseBody, responseBodyError = io.ReadAll(response.Body)
+	if responseBodyError != nil {
+		fmt.Printf("Error reading response body: %v\n", responseBodyError)
+		os.Exit(1)
+	}
+
+	unmarshalError = json.Unmarshal(responseBody, &apiResponse)
+	if unmarshalError != nil {
+		fmt.Printf("Error unmarshalling JSON: %v\n", unmarshalError)
+		os.Exit(1)
+	}
+
+	if len(apiResponse.Data.Items) == 0 {
+		fmt.Printf("No items in response.\n")
+		os.Exit(1)
+	}
+
+	// Extract the relevant data from PM2.5 Response
+	pm25Readings := apiResponse.Data.Items[0].Readings
 
 	output := CleanedData{
-		LastUpdated: latestItem.UpdatedTimestamp,
-		Regions:     apiResponse.Data.Regions,
-		Readings:    latestItem.Readings,
+		LastUpdated: timestamp,
+		Regions:     regions,
+		Readings:    concatReadings(psiReadings, pm25Readings),
 		FetchedAt:   time.Now().Format(time.RFC3339),
 	}
 
