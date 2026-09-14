@@ -61,6 +61,7 @@ export default async function Page() {
   const formattedDate = new Date(data.lastUpdated).toLocaleString('en-SG', {
     dateStyle: 'medium',
     timeStyle: 'short',
+    timeZone: 'Asia/Singapore',
   });
 
   // Extract the list of region names (central, west, north, south, east)
