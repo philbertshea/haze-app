@@ -2,13 +2,6 @@
 	"lastUpdated": "2026-09-15T10:00:00+08:00",
 	"regions": [
 		{
-			"name": "south",
-			"labelLocation": {
-				"latitude": 1.29587,
-				"longitude": 103.82
-			}
-		},
-		{
 			"name": "north",
 			"labelLocation": {
 				"latitude": 1.41803,
@@ -16,10 +9,10 @@
 			}
 		},
 		{
-			"name": "west",
+			"name": "south",
 			"labelLocation": {
-				"latitude": 1.35735,
-				"longitude": 103.7
+				"latitude": 1.29587,
+				"longitude": 103.82
 			}
 		},
 		{
@@ -34,6 +27,13 @@
 			"labelLocation": {
 				"latitude": 1.35735,
 				"longitude": 103.82
+			}
+		},
+		{
+			"name": "west",
+			"labelLocation": {
+				"latitude": 1.35735,
+				"longitude": 103.7
 			}
 		}
 	],
@@ -146,5 +146,5 @@
 			"west": 102
 		}
 	},
-	"fetchedAt": "2026-09-15T02:03:32Z"
+	"fetchedAt": "2026-09-15T03:03:33Z"
 }
