@@ -76,15 +76,15 @@ export default function RegionCard({
               <div className="flex flex-col justify-between">
                 <div>
                   <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
-                    PM2.5 AQI
+                    1-Hr EXPER. PSI*
                   </span>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-                    {usaqi}
+                    {psi1h}
                   </div>
                 </div>
                 <div className="mt-2">
-                  <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${usAqiStatus.bg}`}>
-                    {usAqiStatus.label}
+                  <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${psi1hStatus.bg}`}>
+                    {psi1hStatus.label}
                   </span>
                 </div>
               </div>
@@ -125,9 +125,8 @@ export default function RegionCard({
         >
           <span>{isExpanded ? 'Hide Health Advice' : 'Health Advice for Everyone'}</span>
           <svg
-            className={`w-4 h-4 transform transition-transform duration-200 ${
-              isExpanded ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`w-4 h-4 transform transition-transform duration-200 ${isExpanded ? 'rotate-180' : 'rotate-0'
+              }`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -151,7 +150,7 @@ export default function RegionCard({
                 <p className="leading-relaxed text-slate-400">{usAqiStatus.explainer}</p>
               </div>
             )}
-            
+
             {psiStatus.explainer && (
               <div>
                 <span className="font-bold text-slate-200 block mb-0.5">24-Hr PSI Advice:</span>
@@ -168,9 +167,8 @@ export default function RegionCard({
         >
           <span>{isSensitiveExpanded ? 'Hide Health Advice' : 'Health Advice for Sensitive Groups'}</span>
           <svg
-            className={`w-4 h-4 transform transition-transform duration-200 ${
-              isSensitiveExpanded ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`w-4 h-4 transform transition-transform duration-200 ${isSensitiveExpanded ? 'rotate-180' : 'rotate-0'
+              }`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -194,7 +192,7 @@ export default function RegionCard({
                 <p className="leading-relaxed text-slate-400">{usAqiStatus.sensitive_explainer}</p>
               </div>
             )}
-            
+
             {psiStatus.sensitive_explainer && (
               <div>
                 <span className="font-bold text-slate-200 block mb-0.5">24-Hr PSI Advice:</span>
@@ -209,11 +207,10 @@ export default function RegionCard({
           onClick={() => setIsExperimentalExpanded(!isExperimentalExpanded)}
           className="w-full flex items-center justify-between text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors pt-2 border-t border-slate-800/50 focus:outline-none"
         >
-          <span>{isExperimentalExpanded ? 'Hide Experimental PSI' : 'Show Experimental 1hr PSI'}</span>
+          <span>{isExperimentalExpanded ? 'Hide PSI/AQI comparisons' : 'Show 1-hr PSI/AQI comparisons'}</span>
           <svg
-            className={`w-4 h-4 transform transition-transform duration-200 ${
-              isExperimentalExpanded ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`w-4 h-4 transform transition-transform duration-200 ${isExperimentalExpanded ? 'rotate-180' : 'rotate-0'
+              }`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -225,11 +222,12 @@ export default function RegionCard({
         {/* Explainer Drawer */}
         {isExperimentalExpanded && (
           <div className="pt-2 space-y-3 text-xs text-slate-300 border-t border-slate-800/40">
-            {/* 1-Hr PM2.5 Metric */}
+            <div className="grid grid-cols-2 gap-2">
+              {/* 1-Hr PM2.5 Metric */}
               <div className="flex flex-col justify-between">
                 <div>
                   <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
-                    Experimental 1-Hr PSI
+                    1-Hr EXPER. PSI*
                   </span>
                   <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
                     {psi1h}
@@ -241,9 +239,26 @@ export default function RegionCard({
                   </span>
                 </div>
               </div>
-              <p>IMPORTANT: THIS IS PURELY EXPERIMENTAL. IT IS NOT OFFICIAL AND NOT PUBLISHED BY NEA.</p>
+              <div className="flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                    PM2.5 US AQI
+                  </span>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                    {usaqi}
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${usAqiStatus.bg}`}>
+                    {usAqiStatus.label}
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
+
         )}
+        <p style= {{ fontSize: 10 }}>*IMPORTANT: 1-HR EXPER. PSI IS PURELY EXPERIMENTAL. IT ASSUMES PM2.5 AS THE SOLE POLLUTANT, AND USES 1-HR PM2.5 DATA IN PLACE OF 24-HR PM2.5. IT IS NOT OFFICIAL, NOT PUBLISHED BY NEA, AND MAY BE FACTUALLY INACCURATE.</p>
       </div>
     </div>
   );

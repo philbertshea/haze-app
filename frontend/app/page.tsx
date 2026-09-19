@@ -31,10 +31,10 @@ interface PsiData {
 // Helper to determine status badge based on 24-hr PSI score
 function getPsiStatus(score: number) {
   if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
-  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
-  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'REDUCE prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE prolonged or strenuous outdoor physical exertion. \nPeople with Chronic Lung or Heart Disease should AVOID prolonged or strenuous outdoor physical exertion.' };
-  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'AVOID prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE ALL outdoor activity. \nPeople with Chronic Lung or Heart Disease should AVOID ALL outdoor activity.' };
-  return { label: 'Hazardous', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'MINIMISE ALL outdoor activity.', sensitive_explainer: 'AVOID ALL outdoor activity.' };
+  if (score <= 100) return { label: 'Moderate', bg: 'bg-blue-500/10 text-blue-400 border-blue-500/20', explainer: 'CONTINUE with normal activities.', sensitive_explainer: 'CONTINUE with normal activities.' };
+  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'REDUCE prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE prolonged or strenuous outdoor physical exertion. \nPeople with Chronic Lung or Heart Disease should AVOID prolonged or strenuous outdoor physical exertion.' };
+  if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'AVOID prolonged or strenuous outdoor physical exertion.', sensitive_explainer: 'Elderly, Pregnant and Children should MINIMISE ALL outdoor activity. \nPeople with Chronic Lung or Heart Disease should AVOID ALL outdoor activity.' };
+  return { label: 'Hazardous', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'MINIMISE ALL outdoor activity.', sensitive_explainer: 'AVOID ALL outdoor activity.' };
 }
 
 function getPm25Status(score: number) {
@@ -151,13 +151,12 @@ export default async function Page() {
                 width={1200}
                 height={675}
                 className="w-full h-auto object-cover"
-                priority={false}
+                priority={true}
               />
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              This chart illustrates the correspondence between 1-hr PM 2.5 values and US AQI values.
-              24-hr PSI relies on several pollutant indicators, so we cannot convert these to PSI.
+              This chart illustrates the correspondence between 1-hr PM 2.5 values, US AQI values and our experimental 1-hr PSI values.
             </p>
           </section>
 
