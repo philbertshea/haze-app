@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-09-19T16:00:00+08:00",
+	"lastUpdated": "2026-09-19T17:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -53,45 +53,45 @@
 			"west": 8
 		},
 		"no2_one_hour_max": {
-			"central": 32,
-			"east": 16,
-			"north": 11,
-			"south": 24,
-			"west": 23
+			"central": 28,
+			"east": 28,
+			"north": 12,
+			"south": 23,
+			"west": 26
 		},
 		"o3_eight_hour_max": {
-			"central": 78,
-			"east": 63,
-			"north": 101,
-			"south": 52,
-			"west": 45
+			"central": 81,
+			"east": 65,
+			"north": 109,
+			"south": 53,
+			"west": 50
 		},
 		"o3_sub_index": {
-			"central": 33,
+			"central": 35,
 			"east": 27,
-			"north": 43,
+			"north": 46,
 			"south": 22,
-			"west": 19
+			"west": 21
 		},
 		"pm10_sub_index": {
 			"central": 63,
 			"east": 63,
 			"north": 54,
-			"south": 55,
+			"south": 54,
 			"west": 61
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 76,
 			"east": 75,
 			"north": 56,
-			"south": 59,
-			"west": 70
+			"south": 58,
+			"west": 71
 		},
 		"pm25_one_hourly": {
-			"central": 78,
-			"east": 62,
-			"north": 62,
-			"south": 42,
+			"central": 66,
+			"east": 48,
+			"north": 36,
+			"south": 29,
 			"west": 48
 		},
 		"pm25_sub_index": {
@@ -103,7 +103,7 @@
 		},
 		"pm25_twenty_four_hourly": {
 			"central": 62,
-			"east": 48,
+			"east": 49,
 			"north": 41,
 			"south": 37,
 			"west": 51
@@ -124,27 +124,27 @@
 		},
 		"so2_twenty_four_hourly": {
 			"central": 2,
-			"east": 3,
+			"east": 4,
 			"north": 6,
 			"south": 4,
-			"west": 9
+			"west": 10
 		}
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 125,
-			"east": 108,
-			"north": 108,
-			"south": 85,
+			"central": 112,
+			"east": 92,
+			"north": 78,
+			"south": 70,
 			"west": 92
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 163,
-			"east": 154,
-			"north": 154,
-			"south": 117,
+			"central": 156,
+			"east": 132,
+			"north": 102,
+			"south": 87,
 			"west": 132
 		}
 	},
-	"fetchedAt": "2026-09-19T08:03:36Z"
+	"fetchedAt": "2026-09-19T09:03:35Z"
 }
