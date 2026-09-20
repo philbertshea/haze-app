@@ -2,17 +2,10 @@
 	"lastUpdated": "2026-09-20T06:00:00+08:00",
 	"regions": [
 		{
-			"name": "north",
+			"name": "west",
 			"labelLocation": {
-				"latitude": 1.41803,
-				"longitude": 103.82
-			}
-		},
-		{
-			"name": "south",
-			"labelLocation": {
-				"latitude": 1.29587,
-				"longitude": 103.82
+				"latitude": 1.35735,
+				"longitude": 103.7
 			}
 		},
 		{
@@ -23,16 +16,23 @@
 			}
 		},
 		{
-			"name": "west",
+			"name": "north",
 			"labelLocation": {
-				"latitude": 1.35735,
-				"longitude": 103.7
+				"latitude": 1.41803,
+				"longitude": 103.82
 			}
 		},
 		{
 			"name": "central",
 			"labelLocation": {
 				"latitude": 1.35735,
+				"longitude": 103.82
+			}
+		},
+		{
+			"name": "south",
+			"labelLocation": {
+				"latitude": 1.29587,
 				"longitude": 103.82
 			}
 		}
@@ -146,5 +146,5 @@
 			"west": 153
 		}
 	},
-	"fetchedAt": "2026-09-19T23:03:34Z"
+	"fetchedAt": "2026-09-20T00:03:31Z"
 }
