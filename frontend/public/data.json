@@ -103,7 +103,7 @@
 		},
 		"pm25_twenty_four_hourly": {
 			"central": 17,
-			"east": 14,
+			"east": 15,
 			"north": 13,
 			"south": 13,
 			"west": 17
@@ -146,5 +146,5 @@
 			"west": 78
 		}
 	},
-	"fetchedAt": "2026-09-23T01:03:27Z"
+	"fetchedAt": "2026-09-23T02:03:32Z"
 }
