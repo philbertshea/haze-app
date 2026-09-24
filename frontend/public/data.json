@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-09-25T06:00:00+08:00",
+	"lastUpdated": "2026-09-25T07:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -48,27 +48,27 @@
 		"co_sub_index": {
 			"central": 9,
 			"east": 4,
-			"north": 12,
+			"north": 13,
 			"south": 4,
 			"west": 8
 		},
 		"no2_one_hour_max": {
-			"central": 32,
-			"east": 40,
-			"north": 32,
-			"south": 37,
+			"central": 21,
+			"east": 32,
+			"north": 29,
+			"south": 26,
 			"west": 40
 		},
 		"o3_eight_hour_max": {
 			"central": 6,
-			"east": 5,
+			"east": 6,
 			"north": 3,
 			"south": 15,
 			"west": 5
 		},
 		"o3_sub_index": {
 			"central": 2,
-			"east": 2,
+			"east": 3,
 			"north": 1,
 			"south": 6,
 			"west": 2
@@ -78,41 +78,41 @@
 			"east": 46,
 			"north": 33,
 			"south": 34,
-			"west": 40
+			"west": 41
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 40,
 			"east": 46,
 			"north": 33,
 			"south": 34,
-			"west": 40
+			"west": 41
 		},
 		"pm25_one_hourly": {
 			"central": 42,
-			"east": 36,
-			"north": 28,
-			"south": 24,
-			"west": 40
+			"east": 33,
+			"north": 24,
+			"south": 19,
+			"west": 36
 		},
 		"pm25_sub_index": {
 			"central": 73,
 			"east": 70,
 			"north": 61,
-			"south": 61,
+			"south": 60,
 			"west": 70
 		},
 		"pm25_twenty_four_hourly": {
 			"central": 32,
 			"east": 29,
 			"north": 21,
-			"south": 21,
+			"south": 20,
 			"west": 29
 		},
 		"psi_twenty_four_hourly": {
 			"central": 73,
 			"east": 70,
 			"north": 61,
-			"south": 61,
+			"south": 60,
 			"west": 70
 		},
 		"so2_sub_index": {
@@ -133,18 +133,18 @@
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
 			"central": 85,
-			"east": 78,
-			"north": 69,
-			"south": 65,
-			"west": 83
+			"east": 75,
+			"north": 65,
+			"south": 59,
+			"west": 78
 		},
 		"usaqi_from_pm25_one_hourly": {
 			"central": 117,
-			"east": 102,
-			"north": 84,
-			"south": 76,
-			"west": 112
+			"east": 95,
+			"north": 76,
+			"south": 66,
+			"west": 102
 		}
 	},
-	"fetchedAt": "2026-09-24T22:04:10Z"
+	"fetchedAt": "2026-09-24T23:03:32Z"
 }
