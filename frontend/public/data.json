@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-10-10T09:00:00+08:00",
+	"lastUpdated": "2026-10-10T10:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -46,53 +46,53 @@
 			"west": 1
 		},
 		"co_sub_index": {
-			"central": 11,
-			"east": 11,
+			"central": 12,
+			"east": 12,
 			"north": 13,
 			"south": 13,
 			"west": 11
 		},
 		"no2_one_hour_max": {
-			"central": 15,
-			"east": 22,
-			"north": 15,
-			"south": 21,
-			"west": 27
+			"central": 16,
+			"east": 17,
+			"north": 12,
+			"south": 17,
+			"west": 25
 		},
 		"o3_eight_hour_max": {
-			"central": 55,
-			"east": 36,
-			"north": 48,
-			"south": 36,
-			"west": 26
+			"central": 56,
+			"east": 38,
+			"north": 51,
+			"south": 38,
+			"west": 27
 		},
 		"o3_sub_index": {
-			"central": 23,
-			"east": 15,
-			"north": 20,
-			"south": 15,
-			"west": 11
+			"central": 24,
+			"east": 16,
+			"north": 22,
+			"south": 16,
+			"west": 12
 		},
 		"pm10_sub_index": {
 			"central": 104,
 			"east": 102,
-			"north": 75,
+			"north": 74,
 			"south": 86,
-			"west": 103
+			"west": 102
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 157,
 			"east": 153,
-			"north": 99,
-			"south": 122,
-			"west": 155
+			"north": 98,
+			"south": 121,
+			"west": 153
 		},
 		"pm25_one_hourly": {
-			"central": 119,
-			"east": 110,
-			"north": 80,
-			"south": 81,
-			"west": 111
+			"central": 135,
+			"east": 121,
+			"north": 78,
+			"south": 100,
+			"west": 118
 		},
 		"pm25_sub_index": {
 			"central": 174,
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 168,
-			"east": 158,
-			"north": 127,
-			"south": 128,
-			"west": 159
+			"central": 184,
+			"east": 170,
+			"north": 125,
+			"south": 148,
+			"west": 167
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 184,
-			"east": 179,
-			"north": 164,
-			"south": 164,
-			"west": 180
+			"central": 192,
+			"east": 185,
+			"north": 163,
+			"south": 174,
+			"west": 183
 		}
 	},
-	"fetchedAt": "2026-10-10T01:03:35Z"
+	"fetchedAt": "2026-10-10T02:03:37Z"
 }
