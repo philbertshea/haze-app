@@ -46,9 +46,9 @@ function getPm25Status(score: number) {
 
 function getUsAqiStatus(score: number) {
   if (score <= 50) return { label: 'Good', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', explainer: 'It is a GREAT DAY to be outside.', sensitive_explainer: 'CONTINUE with normal activities.' };
-  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'It is a GOOD DAY to be outside.', sensitive_explainer: 'CONSIDER MAKING outdoor activities shorter and less intense. Watch for coughing and shortness of breath.'  };
+  if (score <= 100) return { label: 'Moderate', bg: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', explainer: 'It is a GOOD DAY to be outside.', sensitive_explainer: 'CONSIDER MAKING outdoor activities shorter and less intense. Watch for coughing and shortness of breath.' };
   if (score <= 150) return { label: 'Unhealthy for Sensitive Groups', bg: 'bg-orange-500/10 text-orange-400 border-orange-500/20', explainer: 'It is a GOOD DAY to be outside.', sensitive_explainer: 'MAKE outdoor activities shorter and less intense. TAKE more breaks. Watch for coughing and shortness of breath.' };
-  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'REDUCE long or intense outdoor activities. TAKE more breaks.', sensitive_explainer: 'AVOID long or intense outdoor activities. Consider rescheduling or moving activities indoors.'};
+  if (score <= 200) return { label: 'Unhealthy', bg: 'bg-red-500/10 text-red-400 border-red-500/20', explainer: 'REDUCE long or intense outdoor activities. TAKE more breaks.', sensitive_explainer: 'AVOID long or intense outdoor activities. Consider rescheduling or moving activities indoors.' };
   if (score <= 300) return { label: 'Very Unhealthy', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20', explainer: 'AVOID long or intense outdoor activities. Consider rescheduling or moving activities indoors.', sensitive_explainer: 'AVOID ALL physical outdoor activities. Reschedule or move activities indoors.' };
   return { label: 'Hazardous', bg: 'bg-stone-500/10 text-stone-400 border-stone-500/20', explainer: 'AVOID ALL physical outdoor activities.', sensitive_explainer: 'REMAIN INDOORS and keep activity levels low.' };
 }
@@ -89,6 +89,10 @@ export default async function Page() {
 
   const regionNames = data.regions.map((r) => r.name).sort((a, b) => a.localeCompare(b));
 
+  const psiSamples: number[] = [0, 51, 101, 201, 301];
+  
+  const pm25Samples: number[] = [0, 101, 201, 301];
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 p-6 md:p-12">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -96,12 +100,135 @@ export default async function Page() {
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-white">Singapore Haze Tracker</h1>
-            <p className="text-slate-400 text-sm mt-1">Air Quality Metrics by Region</p>
           </div>
           <div className="bg-slate-900 px-4 py-2 rounded-lg border border-slate-800 text-xs text-slate-400 self-start md:self-auto">
             Readings from NEA as of: <span className="text-slate-200 font-medium">{formattedDate}</span>
           </div>
         </header>
+
+        {/* Summary Card */}
+        <div className="bg-slate-900/60 backdrop-blur border border-slate-800 rounded-xl p-3 hover:border-slate-700 transition-colors flex flex-col justify-between">
+          <div>
+            {/* Card Title */}
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="capitalize text-xl font-bold text-white">Summary</h2>
+            </div>
+
+            {/* Grouped Metrics Layout */}
+            <div className="grid grid-cols-5 gap-3 mb-2">
+              <div className="col-span-5 bg-indigo-950/20 border border-indigo-500/20 rounded-lg p-2 flex flex-col justify-between">
+                <div className="flex items-center gap-1 mb-2">
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 tracking-wider">
+                    1-HR PM2.5
+                  </span>
+                </div>
+                <div
+                  className="grid gap-3"
+                  style={{ gridTemplateColumns: `repeat(${regionNames.length}, minmax(0, 1fr))` }}
+                >
+                  {regionNames.map((region) => {
+                    const pm251h = data.readings.pm25_one_hourly[region] ?? 0;
+                    const psi1hStatus = getPm25Status(pm251h);
+
+                    return (
+                      <div key={region} className="flex flex-col justify-between">
+                        <div>
+                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                            {region}
+                          </span>
+                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
+                            {pm251h}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+
+              <div className="col-span-5 bg-indigo-950/20 border border-indigo-500/20 rounded-lg p-2 flex flex-col justify-between">
+                <div className="flex items-center gap-1 mb-2">
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 tracking-wider">
+                    1-HR EXPER.PSI
+                  </span>
+                </div>
+                <div
+                  className="grid gap-3"
+                  style={{ gridTemplateColumns: `repeat(${regionNames.length}, minmax(0, 1fr))` }}
+                >
+                  {regionNames.map((region) => {
+                    const psi1h = data.derivedReadings.psi1h_from_pm25_one_hourly[region] ?? 0;
+                    const psi1hStatus = getPsiStatus(psi1h);
+
+                    return (
+                      <div key={region} className="flex flex-col justify-between">
+                        <div>
+                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                            {region}
+                          </span>
+                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
+                            {psi1h}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+
+              <div className="col-span-5 bg-slate-950/50 border border-slate-800/80 rounded-lg p-3 flex flex-col justify-between">
+                <div className="flex items-center gap-1 mb-2">
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-indigo-500/30 tracking-wider">
+                    24-HR PSI
+                  </span>
+                </div>
+                <div
+                  className="grid gap-3"
+                  style={{ gridTemplateColumns: `repeat(${regionNames.length}, minmax(0, 1fr))` }}
+                >
+                  {regionNames.map((region) => {
+                    const psi24h = data.readings.psi_twenty_four_hourly[region] ?? 0;
+                    const psi24hStatus = getPsiStatus(psi24h);
+
+                    return (
+                      <div key={region} className="flex flex-col justify-between">
+                        <div>
+                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                            {region}
+                          </span>
+                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi24hStatus.bg}`}>
+                            {psi24h}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="col-span-5 p-1">
+                <h3 className="text-[10px]">PSI Status Labels</h3>
+                {psiSamples.map((sample) => {
+                  return <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${getPsiStatus(sample).bg}`}>
+                    {getPsiStatus(sample).label}
+                  </span>
+                })}
+              </div>
+
+              <div className="col-span-5 p-1">
+                <h3 className="text-[10px]">PM2.5 Status Labels</h3>
+                {pm25Samples.map((sample) => {
+                  return <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full font-medium border ${getPm25Status(sample).bg}`}>
+                    {getPm25Status(sample).label}
+                  </span>
+                })}
+              </div>
+
+            </div>
+          </div>
+        </div>
 
         {/* Region Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -143,7 +270,7 @@ export default async function Page() {
             <h2 className="text-2xl font-bold text-white tracking-tight">
               PM 2.5 to AQI Explainer
             </h2>
-            
+
             <div className="relative w-full overflow-hidden rounded-lg border border-slate-800 bg-slate-950">
               <Image
                 src="/pm25ToAQI.png"
