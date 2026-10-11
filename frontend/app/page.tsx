@@ -133,10 +133,10 @@ export default async function Page() {
                     return (
                       <div key={region} className="flex flex-col justify-between">
                         <div>
-                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                          <span className="text-[9px] lg:text-[15px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
                             {region}
                           </span>
-                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
+                          <div className={`text-2xl lg:text-4xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
                             {pm251h}
                           </div>
                         </div>
@@ -164,10 +164,10 @@ export default async function Page() {
                     return (
                       <div key={region} className="flex flex-col justify-between">
                         <div>
-                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                          <span className="text-[9px] lg:text-[15px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
                             {region}
                           </span>
-                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
+                          <div className={`text-2xl lg:text-4xl font-extrabold mt-1 ${psi1hStatus.bg}`}>
                             {psi1h}
                           </div>
                         </div>
@@ -195,10 +195,10 @@ export default async function Page() {
                     return (
                       <div key={region} className="flex flex-col justify-between">
                         <div>
-                          <span className="text-[8px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
+                          <span className="text-[9px] lg:text-[15px] font-semibold text-slate-400 uppercase tracking-tight block truncate">
                             {region}
                           </span>
-                          <div className={`text-xl sm:text-2xl font-extrabold mt-1 ${psi24hStatus.bg}`}>
+                          <div className={`text-2xl lg:text-4xl font-extrabold mt-1 ${psi24hStatus.bg}`}>
                             {psi24h}
                           </div>
                         </div>
