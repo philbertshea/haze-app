@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-10-19T21:00:00+08:00",
+	"lastUpdated": "2026-10-19T22:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -50,69 +50,69 @@
 			"east": 7,
 			"north": 10,
 			"south": 9,
-			"west": 5
+			"west": 6
 		},
 		"no2_one_hour_max": {
 			"central": 15,
-			"east": 18,
-			"north": 7,
-			"south": 18,
-			"west": 29
+			"east": 24,
+			"north": 6,
+			"south": 19,
+			"west": 28
 		},
 		"o3_eight_hour_max": {
-			"central": 58,
-			"east": 44,
-			"north": 70,
-			"south": 38,
-			"west": 31
+			"central": 53,
+			"east": 40,
+			"north": 62,
+			"south": 34,
+			"west": 26
 		},
 		"o3_sub_index": {
-			"central": 25,
-			"east": 19,
-			"north": 30,
-			"south": 16,
-			"west": 13
+			"central": 23,
+			"east": 17,
+			"north": 26,
+			"south": 14,
+			"west": 11
 		},
 		"pm10_sub_index": {
-			"central": 67,
+			"central": 68,
 			"east": 64,
 			"north": 56,
 			"south": 55,
 			"west": 67
 		},
 		"pm10_twenty_four_hourly": {
-			"central": 84,
-			"east": 77,
+			"central": 85,
+			"east": 78,
 			"north": 61,
 			"south": 59,
 			"west": 84
 		},
 		"pm25_one_hourly": {
-			"central": 73,
-			"east": 56,
-			"north": 30,
-			"south": 57,
-			"west": 83
+			"central": 77,
+			"east": 46,
+			"north": 43,
+			"south": 62,
+			"west": 89
 		},
 		"pm25_sub_index": {
-			"central": 107,
+			"central": 109,
 			"east": 92,
 			"north": 87,
-			"south": 89,
+			"south": 90,
 			"west": 114
 		},
 		"pm25_twenty_four_hourly": {
-			"central": 62,
-			"east": 48,
+			"central": 63,
+			"east": 49,
 			"north": 44,
-			"south": 45,
+			"south": 46,
 			"west": 68
 		},
 		"psi_twenty_four_hourly": {
-			"central": 107,
+			"central": 109,
 			"east": 92,
 			"north": 87,
-			"south": 89,
+			"south": 90,
 			"west": 114
 		},
 		"so2_sub_index": {
@@ -125,26 +125,26 @@
 		"so2_twenty_four_hourly": {
 			"central": 6,
 			"east": 4,
-			"north": 8,
+			"north": 7,
 			"south": 3,
 			"west": 4
 		}
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 120,
-			"east": 102,
-			"north": 71,
-			"south": 103,
-			"west": 130
+			"central": 124,
+			"east": 90,
+			"north": 86,
+			"south": 108,
+			"west": 136
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 160,
-			"east": 151,
-			"north": 89,
-			"south": 152,
-			"west": 165
+			"central": 162,
+			"east": 127,
+			"north": 119,
+			"south": 154,
+			"west": 168
 		}
 	},
-	"fetchedAt": "2026-10-19T13:01:33Z"
+	"fetchedAt": "2026-10-19T14:01:36Z"
 }
