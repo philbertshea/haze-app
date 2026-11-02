@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-03T06:00:00+08:00",
+	"lastUpdated": "2026-11-03T07:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -46,18 +46,18 @@
 			"west": 1
 		},
 		"co_sub_index": {
-			"central": 9,
+			"central": 10,
 			"east": 8,
 			"north": 9,
 			"south": 7,
-			"west": 9
+			"west": 10
 		},
 		"no2_one_hour_max": {
-			"central": 27,
-			"east": 30,
+			"central": 19,
+			"east": 26,
 			"north": 23,
-			"south": 39,
-			"west": 32
+			"south": 34,
+			"west": 36
 		},
 		"o3_eight_hour_max": {
 			"central": 6,
@@ -75,43 +75,43 @@
 		},
 		"pm10_sub_index": {
 			"central": 42,
-			"east": 42,
+			"east": 43,
 			"north": 48,
-			"south": 37,
+			"south": 38,
 			"west": 54
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 42,
-			"east": 42,
+			"east": 43,
 			"north": 48,
-			"south": 37,
-			"west": 57
+			"south": 38,
+			"west": 58
 		},
 		"pm25_one_hourly": {
-			"central": 38,
-			"east": 29,
-			"north": 27,
+			"central": 47,
+			"east": 34,
+			"north": 26,
 			"south": 38,
-			"west": 44
+			"west": 46
 		},
 		"pm25_sub_index": {
-			"central": 66,
+			"central": 67,
 			"east": 65,
-			"north": 70,
+			"north": 69,
 			"south": 67,
 			"west": 81
 		},
 		"pm25_twenty_four_hourly": {
 			"central": 26,
-			"east": 24,
+			"east": 25,
 			"north": 28,
-			"south": 26,
+			"south": 27,
 			"west": 39
 		},
 		"psi_twenty_four_hourly": {
-			"central": 66,
+			"central": 67,
 			"east": 65,
-			"north": 70,
+			"north": 69,
 			"south": 67,
 			"west": 81
 		},
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 81,
-			"east": 70,
-			"north": 68,
+			"central": 91,
+			"east": 76,
+			"north": 67,
 			"south": 81,
-			"west": 87
+			"west": 90
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 107,
-			"east": 87,
-			"north": 82,
+			"central": 129,
+			"east": 97,
+			"north": 80,
 			"south": 107,
-			"west": 122
+			"west": 127
 		}
 	},
-	"fetchedAt": "2026-11-02T22:01:35Z"
+	"fetchedAt": "2026-11-02T23:01:30Z"
 }
