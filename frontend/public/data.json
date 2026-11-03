@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-03T07:00:00+08:00",
+	"lastUpdated": "2026-11-03T08:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -53,15 +53,15 @@
 			"west": 10
 		},
 		"no2_one_hour_max": {
-			"central": 19,
-			"east": 26,
-			"north": 23,
-			"south": 34,
-			"west": 36
+			"central": 18,
+			"east": 30,
+			"north": 25,
+			"south": 33,
+			"west": 35
 		},
 		"o3_eight_hour_max": {
 			"central": 6,
-			"east": 2,
+			"east": 3,
 			"north": 6,
 			"south": 1,
 			"west": 3
@@ -74,45 +74,45 @@
 			"west": 1
 		},
 		"pm10_sub_index": {
-			"central": 42,
-			"east": 43,
+			"central": 43,
+			"east": 44,
 			"north": 48,
 			"south": 38,
 			"west": 54
 		},
 		"pm10_twenty_four_hourly": {
-			"central": 42,
-			"east": 43,
+			"central": 43,
+			"east": 44,
 			"north": 48,
 			"south": 38,
-			"west": 58
+			"west": 57
 		},
 		"pm25_one_hourly": {
-			"central": 47,
-			"east": 34,
-			"north": 26,
-			"south": 38,
-			"west": 46
+			"central": 53,
+			"east": 29,
+			"north": 30,
+			"south": 35,
+			"west": 43
 		},
 		"pm25_sub_index": {
-			"central": 67,
+			"central": 68,
 			"east": 65,
 			"north": 69,
-			"south": 67,
+			"south": 68,
 			"west": 81
 		},
 		"pm25_twenty_four_hourly": {
-			"central": 26,
+			"central": 27,
 			"east": 25,
 			"north": 28,
 			"south": 27,
 			"west": 39
 		},
 		"psi_twenty_four_hourly": {
-			"central": 67,
+			"central": 68,
 			"east": 65,
 			"north": 69,
-			"south": 67,
+			"south": 68,
 			"west": 81
 		},
 		"so2_sub_index": {
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 91,
-			"east": 76,
-			"north": 67,
-			"south": 81,
-			"west": 90
+			"central": 98,
+			"east": 70,
+			"north": 71,
+			"south": 77,
+			"west": 86
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 129,
-			"east": 97,
-			"north": 80,
-			"south": 107,
-			"west": 127
+			"central": 144,
+			"east": 87,
+			"north": 89,
+			"south": 99,
+			"west": 119
 		}
 	},
-	"fetchedAt": "2026-11-02T23:01:30Z"
+	"fetchedAt": "2026-11-03T00:01:36Z"
 }
