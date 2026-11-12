@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-12T08:00:00+08:00",
+	"lastUpdated": "2026-11-12T09:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -49,22 +49,22 @@
 			"central": 9,
 			"east": 8,
 			"north": 3,
-			"south": 3,
+			"south": 4,
 			"west": 5
 		},
 		"no2_one_hour_max": {
-			"central": 17,
-			"east": 37,
-			"north": 57,
-			"south": 22,
-			"west": 13
+			"central": 22,
+			"east": 34,
+			"north": 59,
+			"south": 27,
+			"west": 14
 		},
 		"o3_eight_hour_max": {
 			"central": 5,
-			"east": 2,
+			"east": 3,
 			"north": 3,
 			"south": 11,
-			"west": 9
+			"west": 10
 		},
 		"o3_sub_index": {
 			"central": 2,
@@ -75,24 +75,24 @@
 		},
 		"pm10_sub_index": {
 			"central": 31,
-			"east": 36,
+			"east": 37,
 			"north": 28,
 			"south": 26,
 			"west": 36
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 31,
-			"east": 36,
+			"east": 37,
 			"north": 28,
 			"south": 26,
 			"west": 36
 		},
 		"pm25_one_hourly": {
-			"central": 18,
-			"east": 13,
-			"north": 17,
-			"south": 13,
-			"west": 15
+			"central": 22,
+			"east": 19,
+			"north": 21,
+			"south": 16,
+			"west": 9
 		},
 		"pm25_sub_index": {
 			"central": 57,
@@ -104,8 +104,8 @@
 		"pm25_twenty_four_hourly": {
 			"central": 17,
 			"east": 16,
-			"north": 14,
-			"south": 16,
+			"north": 15,
+			"south": 15,
 			"west": 19
 		},
 		"psi_twenty_four_hourly": {
@@ -118,33 +118,33 @@
 		"so2_sub_index": {
 			"central": 2,
 			"east": 4,
-			"north": 3,
+			"north": 4,
 			"south": 2,
 			"west": 4
 		},
 		"so2_twenty_four_hourly": {
 			"central": 3,
 			"east": 7,
-			"north": 5,
+			"north": 6,
 			"south": 3,
 			"west": 6
 		}
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 58,
-			"east": 52,
-			"north": 57,
-			"south": 52,
-			"west": 54
+			"central": 62,
+			"east": 59,
+			"north": 61,
+			"south": 55,
+			"west": 38
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 63,
-			"east": 53,
-			"north": 61,
-			"south": 53,
-			"west": 57
+			"central": 72,
+			"east": 66,
+			"north": 70,
+			"south": 59,
+			"west": 38
 		}
 	},
-	"fetchedAt": "2026-11-12T00:01:28Z"
+	"fetchedAt": "2026-11-12T01:01:29Z"
 }
