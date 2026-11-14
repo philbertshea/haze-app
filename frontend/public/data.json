@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-14T08:00:00+08:00",
+	"lastUpdated": "2026-11-14T09:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -53,49 +53,49 @@
 			"west": 10
 		},
 		"no2_one_hour_max": {
-			"central": 30,
-			"east": 34,
-			"north": 20,
-			"south": 32,
-			"west": 31
+			"central": 21,
+			"east": 26,
+			"north": 21,
+			"south": 25,
+			"west": 26
 		},
 		"o3_eight_hour_max": {
-			"central": 6,
-			"east": 6,
-			"north": 7,
-			"south": 2,
-			"west": 4
+			"central": 8,
+			"east": 7,
+			"north": 9,
+			"south": 3,
+			"west": 5
 		},
 		"o3_sub_index": {
 			"central": 3,
 			"east": 3,
-			"north": 3,
+			"north": 4,
 			"south": 1,
 			"west": 2
 		},
 		"pm10_sub_index": {
 			"central": 35,
 			"east": 34,
-			"north": 39,
+			"north": 38,
 			"south": 31,
-			"west": 51
+			"west": 52
 		},
 		"pm10_twenty_four_hourly": {
 			"central": 35,
 			"east": 34,
-			"north": 39,
+			"north": 38,
 			"south": 31,
 			"west": 52
 		},
 		"pm25_one_hourly": {
-			"central": 33,
-			"east": 25,
-			"north": 22,
-			"south": 22,
-			"west": 35
+			"central": 24,
+			"east": 15,
+			"north": 21,
+			"south": 18,
+			"west": 30
 		},
 		"pm25_sub_index": {
-			"central": 62,
+			"central": 63,
 			"east": 55,
 			"north": 61,
 			"south": 59,
@@ -106,10 +106,10 @@
 			"east": 16,
 			"north": 21,
 			"south": 19,
-			"west": 36
+			"west": 37
 		},
 		"psi_twenty_four_hourly": {
-			"central": 62,
+			"central": 63,
 			"east": 55,
 			"north": 61,
 			"south": 59,
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 75,
-			"east": 66,
-			"north": 62,
-			"south": 62,
-			"west": 77
+			"central": 65,
+			"east": 54,
+			"north": 61,
+			"south": 58,
+			"west": 71
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 95,
-			"east": 78,
-			"north": 72,
-			"south": 72,
-			"west": 99
+			"central": 76,
+			"east": 57,
+			"north": 70,
+			"south": 63,
+			"west": 89
 		}
 	},
-	"fetchedAt": "2026-11-14T00:01:35Z"
+	"fetchedAt": "2026-11-14T01:01:36Z"
 }
