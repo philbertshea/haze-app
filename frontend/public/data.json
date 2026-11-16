@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-16T13:00:00+08:00",
+	"lastUpdated": "2026-11-16T14:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -53,36 +53,36 @@
 			"west": 3
 		},
 		"no2_one_hour_max": {
-			"central": 9,
-			"east": 23,
-			"north": 11,
+			"central": 6,
+			"east": 22,
+			"north": 6,
 			"south": 12,
 			"west": 5
 		},
 		"o3_eight_hour_max": {
-			"central": 20,
-			"east": 16,
-			"north": 17,
-			"south": 11,
-			"west": 13
+			"central": 27,
+			"east": 20,
+			"north": 25,
+			"south": 15,
+			"west": 17
 		},
 		"o3_sub_index": {
-			"central": 9,
-			"east": 7,
-			"north": 7,
-			"south": 5,
-			"west": 5
+			"central": 12,
+			"east": 9,
+			"north": 10,
+			"south": 6,
+			"west": 7
 		},
 		"pm10_sub_index": {
-			"central": 23,
-			"east": 21,
+			"central": 24,
+			"east": 22,
 			"north": 23,
 			"south": 17,
 			"west": 26
 		},
 		"pm10_twenty_four_hourly": {
-			"central": 23,
-			"east": 21,
+			"central": 24,
+			"east": 22,
 			"north": 23,
 			"south": 17,
 			"west": 26
@@ -90,13 +90,13 @@
 		"pm25_one_hourly": {
 			"central": 6,
 			"east": 7,
-			"north": 5,
-			"south": 10,
+			"north": 7,
+			"south": 9,
 			"west": 5
 		},
 		"pm25_sub_index": {
 			"central": 53,
-			"east": 42,
+			"east": 43,
 			"north": 49,
 			"south": 50,
 			"west": 55
@@ -110,7 +110,7 @@
 		},
 		"psi_twenty_four_hourly": {
 			"central": 53,
-			"east": 42,
+			"east": 43,
 			"north": 49,
 			"south": 50,
 			"west": 55
@@ -123,7 +123,7 @@
 			"west": 2
 		},
 		"so2_twenty_four_hourly": {
-			"central": 3,
+			"central": 2,
 			"east": 5,
 			"north": 6,
 			"south": 3,
@@ -134,17 +134,17 @@
 		"psi1h_from_pm25_one_hourly": {
 			"central": 25,
 			"east": 29,
-			"north": 21,
-			"south": 42,
+			"north": 29,
+			"south": 38,
 			"west": 21
 		},
 		"usaqi_from_pm25_one_hourly": {
 			"central": 25,
 			"east": 29,
-			"north": 21,
-			"south": 42,
+			"north": 29,
+			"south": 38,
 			"west": 21
 		}
 	},
-	"fetchedAt": "2026-11-16T05:01:34Z"
+	"fetchedAt": "2026-11-16T06:01:35Z"
 }
