@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-17T17:00:00+08:00",
+	"lastUpdated": "2026-11-17T18:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -40,7 +40,7 @@
 	"readings": {
 		"co_eight_hour_max": {
 			"central": 0,
-			"east": 1,
+			"east": 0,
 			"north": 1,
 			"south": 0,
 			"west": 0
@@ -53,25 +53,25 @@
 			"west": 3
 		},
 		"no2_one_hour_max": {
-			"central": 30,
+			"central": 51,
 			"east": 36,
-			"north": 15,
-			"south": 35,
-			"west": 20
+			"north": 19,
+			"south": 31,
+			"west": 28
 		},
 		"o3_eight_hour_max": {
-			"central": 35,
-			"east": 27,
-			"north": 36,
-			"south": 17,
-			"west": 24
+			"central": 37,
+			"east": 29,
+			"north": 39,
+			"south": 18,
+			"west": 25
 		},
 		"o3_sub_index": {
-			"central": 15,
+			"central": 16,
 			"east": 12,
-			"north": 15,
+			"north": 17,
 			"south": 7,
-			"west": 10
+			"west": 11
 		},
 		"pm10_sub_index": {
 			"central": 20,
@@ -88,31 +88,31 @@
 			"west": 19
 		},
 		"pm25_one_hourly": {
-			"central": 12,
-			"east": 13,
-			"north": 12,
-			"south": 15,
+			"central": 7,
+			"east": 11,
+			"north": 10,
+			"south": 10,
 			"west": 5
 		},
 		"pm25_sub_index": {
-			"central": 42,
+			"central": 39,
 			"east": 38,
 			"north": 49,
-			"south": 37,
+			"south": 38,
 			"west": 35
 		},
 		"pm25_twenty_four_hourly": {
-			"central": 10,
+			"central": 9,
 			"east": 9,
 			"north": 12,
 			"south": 9,
 			"west": 8
 		},
 		"psi_twenty_four_hourly": {
-			"central": 42,
+			"central": 39,
 			"east": 38,
 			"north": 49,
-			"south": 37,
+			"south": 38,
 			"west": 35
 		},
 		"so2_sub_index": {
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 50,
-			"east": 52,
-			"north": 50,
-			"south": 54,
+			"central": 29,
+			"east": 46,
+			"north": 42,
+			"south": 42,
 			"west": 21
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 50,
-			"east": 53,
-			"north": 50,
-			"south": 57,
+			"central": 29,
+			"east": 46,
+			"north": 42,
+			"south": 42,
 			"west": 21
 		}
 	},
-	"fetchedAt": "2026-11-17T09:01:34Z"
+	"fetchedAt": "2026-11-17T10:01:33Z"
 }
