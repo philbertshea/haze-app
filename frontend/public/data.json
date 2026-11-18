@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-18T07:00:00+08:00",
+	"lastUpdated": "2026-11-18T08:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -53,10 +53,10 @@
 			"west": 4
 		},
 		"no2_one_hour_max": {
-			"central": 23,
-			"east": 19,
+			"central": 20,
+			"east": 20,
 			"north": 17,
-			"south": 24,
+			"south": 23,
 			"west": 17
 		},
 		"o3_eight_hour_max": {
@@ -74,28 +74,28 @@
 			"west": 2
 		},
 		"pm10_sub_index": {
-			"central": 19,
+			"central": 18,
 			"east": 25,
 			"north": 24,
 			"south": 17,
 			"west": 20
 		},
 		"pm10_twenty_four_hourly": {
-			"central": 19,
+			"central": 18,
 			"east": 25,
 			"north": 24,
 			"south": 17,
 			"west": 20
 		},
 		"pm25_one_hourly": {
-			"central": 14,
+			"central": 8,
 			"east": 12,
-			"north": 14,
-			"south": 11,
-			"west": 12
+			"north": 13,
+			"south": 15,
+			"west": 13
 		},
 		"pm25_sub_index": {
-			"central": 45,
+			"central": 44,
 			"east": 41,
 			"north": 51,
 			"south": 42,
@@ -104,12 +104,12 @@
 		"pm25_twenty_four_hourly": {
 			"central": 11,
 			"east": 10,
-			"north": 13,
+			"north": 12,
 			"south": 10,
 			"west": 10
 		},
 		"psi_twenty_four_hourly": {
-			"central": 45,
+			"central": 44,
 			"east": 41,
 			"north": 51,
 			"south": 42,
@@ -132,19 +132,19 @@
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 53,
+			"central": 33,
 			"east": 50,
-			"north": 53,
-			"south": 46,
-			"west": 50
+			"north": 52,
+			"south": 54,
+			"west": 52
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 55,
+			"central": 33,
 			"east": 50,
-			"north": 55,
-			"south": 46,
-			"west": 50
+			"north": 53,
+			"south": 57,
+			"west": 53
 		}
 	},
-	"fetchedAt": "2026-11-17T23:01:35Z"
+	"fetchedAt": "2026-11-18T00:01:25Z"
 }
