@@ -1,5 +1,5 @@
 {
-	"lastUpdated": "2026-11-27T05:00:00+08:00",
+	"lastUpdated": "2026-11-27T06:00:00+08:00",
 	"regions": [
 		{
 			"name": "north",
@@ -54,24 +54,24 @@
 		},
 		"no2_one_hour_max": {
 			"central": 12,
-			"east": 21,
-			"north": 5,
-			"south": 15,
-			"west": 6
+			"east": 15,
+			"north": 4,
+			"south": 19,
+			"west": 5
 		},
 		"o3_eight_hour_max": {
 			"central": 17,
 			"east": 12,
-			"north": 25,
-			"south": 15,
+			"north": 26,
+			"south": 16,
 			"west": 13
 		},
 		"o3_sub_index": {
 			"central": 7,
 			"east": 5,
 			"north": 11,
-			"south": 6,
-			"west": 6
+			"south": 7,
+			"west": 5
 		},
 		"pm10_sub_index": {
 			"central": 19,
@@ -88,17 +88,17 @@
 			"west": 21
 		},
 		"pm25_one_hourly": {
-			"central": 5,
-			"east": 10,
-			"north": 3,
-			"south": 5,
-			"west": 4
+			"central": 8,
+			"east": 8,
+			"north": 6,
+			"south": 11,
+			"west": 5
 		},
 		"pm25_sub_index": {
-			"central": 33,
-			"east": 33,
-			"north": 26,
-			"south": 33,
+			"central": 34,
+			"east": 32,
+			"north": 27,
+			"south": 34,
 			"west": 26
 		},
 		"pm25_twenty_four_hourly": {
@@ -109,42 +109,42 @@
 			"west": 6
 		},
 		"psi_twenty_four_hourly": {
-			"central": 33,
-			"east": 33,
-			"north": 26,
-			"south": 33,
+			"central": 34,
+			"east": 32,
+			"north": 27,
+			"south": 34,
 			"west": 26
 		},
 		"so2_sub_index": {
 			"central": 2,
 			"east": 2,
-			"north": 4,
+			"north": 5,
 			"south": 3,
 			"west": 3
 		},
 		"so2_twenty_four_hourly": {
 			"central": 3,
 			"east": 4,
-			"north": 7,
+			"north": 8,
 			"south": 5,
 			"west": 4
 		}
 	},
 	"derivedReadings": {
 		"psi1h_from_pm25_one_hourly": {
-			"central": 21,
-			"east": 42,
-			"north": 13,
-			"south": 21,
-			"west": 17
+			"central": 33,
+			"east": 33,
+			"north": 25,
+			"south": 46,
+			"west": 21
 		},
 		"usaqi_from_pm25_one_hourly": {
-			"central": 21,
-			"east": 42,
-			"north": 13,
-			"south": 21,
-			"west": 17
+			"central": 33,
+			"east": 33,
+			"north": 25,
+			"south": 46,
+			"west": 21
 		}
 	},
-	"fetchedAt": "2026-11-26T21:01:38Z"
+	"fetchedAt": "2026-11-26T22:01:30Z"
 }
